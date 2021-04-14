@@ -1,5 +1,8 @@
 package com.vaibhav.chess.exception;
 
+/**
+ * Wrapper exception class for all exception throws from chess package.
+ */
 public class GameException extends Throwable {
     private final String errorString;
 
@@ -19,10 +22,8 @@ public class GameException extends Throwable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("GameException{");
-        sb.append("Error Code = '").append(errorString).append('\'');
-        sb.append(", Error message = '").append(getMessage()).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "GameException{" + "Error Code = '" + errorString + '\'' +
+                ", Error message = '" + getMessage() + '\'' +
+                '}';
     }
 }

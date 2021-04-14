@@ -5,6 +5,9 @@ import com.vaibhav.chess.ICellDataManager;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation class for {@code ICellDataManager}
+ */
 public class CellDataManagerImpl implements ICellDataManager {
     private final List<Cell> cells;
 
@@ -29,5 +32,10 @@ public class CellDataManagerImpl implements ICellDataManager {
             identifiers.add(c.getIdentifier());
         }
         return identifiers;
+
+        // Alternate solution:
+        // TODO: It doesn't maintain the order of the actual list.
+        //Map<String, List<Cell>> collect = cells.stream().collect(Collectors.groupingBy(Cell::getIdentifier));
+        //return new ArrayList<>(collect.keySet());
     }
 }

@@ -11,6 +11,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
+        // Checks if user input is received properly or not
         if (args == null || args.length != 2 || isEmpty(args[0]) || isEmpty(args[1])) {
             throw new IllegalArgumentException("INVALID_INPUT");
         }
@@ -20,6 +22,7 @@ public class Main {
         Board chessBoard = new Board();
         chessBoard.initializeBoard();
 
+        // Defining CellDataManager, which is used to fetch the required data for a cell
         ICellDataManager cellDataManager = new CellDataManagerImpl(chessBoard.getCells());
 
         Piece piece = PieceFactory.getPiece(pieceName, cellDataManager);
@@ -34,13 +37,14 @@ public class Main {
                 throw new GameException("INVALID_IDENTIFIER", identifier + " not found, please enter valid input");
             }
 
+            // Checks for all possible moves of a particular piece
             List<Cell> possibleMoves = piece.possibleMoves(cell);
             List<String> listOfMoves = cellDataManager.getIdentifiers(possibleMoves);
 
             System.out.println(Arrays.toString(listOfMoves.toArray()) + " :: Count = " + listOfMoves.size());
         } catch (GameException e) {
             e.printStackTrace();
-            System.out.println(e.toString());
+            System.out.println(e.getErrorString());
         }
     }
 

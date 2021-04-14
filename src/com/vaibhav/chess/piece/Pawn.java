@@ -9,6 +9,8 @@ public class Pawn extends Piece {
 
     @Override
     public List<Cell> possibleMoves(Cell cell) throws GameException {
+        // Considering only forward movement of Pawn 1 step forward and 1-1 step diagonal.
+        // Hence, below are the 3 directions where a Pawn can move on a chessboard.
         int[] xMoves = {1, 1, 1};
         int[] yMoves = {0, 1, -1};
         return tracePossibleMoves(cell, xMoves, yMoves);

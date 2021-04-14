@@ -2,6 +2,9 @@ package com.vaibhav.chess;
 
 import com.vaibhav.chess.piece.*;
 
+/**
+ * This factory class is used to initialize the chess piece
+ */
 public class PieceFactory {
     private static final String BISHOP = "BISHOP";
     private static final String HORSE = "HORSE";

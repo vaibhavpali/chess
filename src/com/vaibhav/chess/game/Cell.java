@@ -2,10 +2,13 @@ package com.vaibhav.chess.game;
 
 import com.vaibhav.chess.piece.Piece;
 
+/**
+ * Represents a cell on a chess board. A single cell has various properties like, it can hold piece,
+ * coordinates with (x,y) positions on the board and an identifier(named value to the cell).
+ */
 public class Cell {
 
     private Piece piece;
-
     private final int xPosition, yPosition;
     private final String identifier;
 
