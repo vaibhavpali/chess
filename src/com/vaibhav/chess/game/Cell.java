@@ -38,7 +38,7 @@ public class Cell {
         return identifier;
     }
 
-    private String computeIdentifier(int valueInascii) {
-        return (char) valueInascii + Integer.toString(yPosition + 1);
+    private String computeIdentifier(int valueInAscii) {
+        return (char) valueInAscii + Integer.toString(yPosition + 1);
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 public class Horse extends Piece {
 
     @Override
-    public List<Cell> possibleMoves(Cell cell) throws GameException {
+    public List<Cell> possibleMoves(Cell cell) {
         // Below are 8 positions with 2.5 cell distance apart where a Horse can move on a chessboard.
         int[] xMoves = {2, 1, -1, -2, -2, -1, 1, 2};
         int[] yMoves = {1, 2, 2, 1, -1, -2, -2, -1};

@@ -47,11 +47,6 @@ public class BishopTest extends BaseTest {
         assertEquals(7, possibleMoves.size());
     }
 
-    @Test(expected = GameException.class)
-    public void possibleMovesCellNull() throws GameException {
-        piece.possibleMoves(null);
-    }
-
     @Test
     public void canMove() {
         Cell startCell = cellDataManager.getCellById("A1");

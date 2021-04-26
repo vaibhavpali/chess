@@ -16,6 +16,7 @@ public abstract class Piece {
     /**
      * Implementation of {@code ICellDataManager} is injected to perform various operations on cell. This interface can
      * be implemented by any consumer of {@code Piece} package.
+     *
      * @param dataManager Instance of {@code ICellDataManager}
      */
     public void setCellDataManager(ICellDataManager dataManager) {
@@ -24,20 +25,22 @@ public abstract class Piece {
 
     /**
      * Get possible moves of specific {@code Piece} on a empty chessboard
+     *
      * @param cell Holds the current position of a piece on a board.
      * @return {@code List<Cell> List of all possible moves}
      * @throws GameException with below error code:
-     *  <ul>
-     *      <li>CELL_NOT_FOUND</li>
-     *  </ul>
+     *                       <ul>
+     *                           <li>CELL_NOT_FOUND</li>
+     *                       </ul>
      */
     public abstract List<Cell> possibleMoves(Cell cell) throws GameException;
 
     /**
      * This method is responsible to determine whether current move for a cell is valid or not,
      * considering blockages in the running game.
+     *
      * @param startCell a cell from where piece needs to be moved.
-     * @param endCell destination cell where piece can be placed
+     * @param endCell   destination cell where piece can be placed
      * @return {@code true} if move is valid
      */
     public abstract boolean canMove(Cell startCell, Cell endCell);
@@ -49,37 +52,29 @@ public abstract class Piece {
         return x >= 0 && y >= 0 && x < 8 && y < 8;
     }
 
-    protected List<Cell> tracePossibleMovesIteratively(Cell cell, int[] xMoves, int[] yMoves) throws GameException {
+    protected List<Cell> tracePossibleMovesIteratively(Cell cell, int[] xMoves, int[] yMoves) {
         List<Cell> possibleMoves = new ArrayList<>();
-        if(cell != null) {
-            for (int i = 0; i < xMoves.length; i++) {
-                int xNextPosition = cell.getXPosition() + xMoves[i];
-                int yNextPosition = cell.getYPosition() + yMoves[i];
-                while (isValidCellMovement(xNextPosition, yNextPosition)) {
-                    possibleMoves.add(cellDataManager.getCellByPosition(xNextPosition, yNextPosition));
-                    xNextPosition += xMoves[i];
-                    yNextPosition += yMoves[i];
-                }
+        for (int i = 0; i < xMoves.length; i++) {
+            int xNextPosition = cell.getXPosition() + xMoves[i];
+            int yNextPosition = cell.getYPosition() + yMoves[i];
+            while (isValidCellMovement(xNextPosition, yNextPosition)) {
+                possibleMoves.add(cellDataManager.getCellByPosition(xNextPosition, yNextPosition));
+                xNextPosition += xMoves[i];
+                yNextPosition += yMoves[i];
             }
-        } else {
-            throw new GameException("CELL_NOT_FOUND", "Input cell not found on the board");
         }
         return possibleMoves;
     }
 
-    protected List<Cell> tracePossibleMoves(Cell cell, int[] xMoves, int[] yMoves) throws GameException {
+    protected List<Cell> tracePossibleMoves(Cell cell, int[] xMoves, int[] yMoves) {
         List<Cell> possibleMoves = new ArrayList<>();
-        if(cell != null) {
-            for (int i = 0; i < xMoves.length; i++) {
-                int xNextPosition = cell.getXPosition() + xMoves[i];
-                int yNextPosition = cell.getYPosition() + yMoves[i];
-                if(isValidCellMovement(xNextPosition, yNextPosition)) {
-                    possibleMoves.add(cellDataManager.getCellByPosition(xNextPosition, yNextPosition));
-                }
+        for (int i = 0; i < xMoves.length; i++) {
+            int xNextPosition = cell.getXPosition() + xMoves[i];
+            int yNextPosition = cell.getYPosition() + yMoves[i];
+            if (isValidCellMovement(xNextPosition, yNextPosition)) {
+                possibleMoves.add(cellDataManager.getCellByPosition(xNextPosition, yNextPosition));
             }
-        } else {
-            throw new GameException("CELL_NOT_FOUND", "Input cell not found on the board");
         }
         return possibleMoves;
     }
- }
+}

@@ -8,7 +8,7 @@ import java.util.List;
 public class King extends Piece {
 
     @Override
-    public List<Cell> possibleMoves(Cell cell) throws GameException {
+    public List<Cell> possibleMoves(Cell cell) {
         // Below are 8 directions where a king can move 1 step on a chessboard.
         int[] xMoves = {0, 1, 1, 1, 0, -1, -1, -1};
         int[] yMoves = {1, 1, 0, -1, -1, -1, 0, 1};

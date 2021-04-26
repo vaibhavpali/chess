@@ -34,11 +34,6 @@ public class KingTest extends BaseTest {
         assertEquals(3, cells.size());
     }
 
-    @Test(expected = GameException.class)
-    public void possibleMovesCellNull() throws GameException {
-        piece.possibleMoves(null);
-    }
-
     @Test
     public void canMoveTest() {
         Cell startCell = cellDataManager.getCellById("A1");
