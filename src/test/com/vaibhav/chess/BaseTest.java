@@ -22,7 +22,6 @@ public class BaseTest {
 
     private void setBoard() {
         board = new Board();
-        board.initializeBoard();
         cellDataManager = new CellDataManagerImpl(board.getCells());
     }
 }

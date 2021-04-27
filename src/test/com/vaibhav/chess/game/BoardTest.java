@@ -11,7 +11,7 @@ public class BoardTest extends BaseTest {
     @Test
     public void getCellsTest() {
         assertNotNull(board.getCells());
-        assertEquals(64, board.cells.size());
+        assertEquals(64, board.getCells().size());
     }
 
 }

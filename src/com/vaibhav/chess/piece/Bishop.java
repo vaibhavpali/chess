@@ -1,6 +1,5 @@
 package com.vaibhav.chess.piece;
 
-import com.vaibhav.chess.exception.GameException;
 import com.vaibhav.chess.game.Cell;
 
 import java.util.List;

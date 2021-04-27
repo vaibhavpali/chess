@@ -20,7 +20,6 @@ public class Main {
         String identifier = args[1];
 
         Board chessBoard = new Board();
-        chessBoard.initializeBoard();
 
         // Defining CellDataManager, which is used to fetch the required data for a cell
         ICellDataManager cellDataManager = new CellDataManagerImpl(chessBoard.getCells());
